@@ -5,14 +5,19 @@ import "./styles/reset.css";
 import "antd/dist/reset.css";
 import Layout from "./components/Layout";
 import GlobalStyle from "./styles/globalStyle";
+import { ThemeProvider } from "styled-components";
+import theme from "./styles/theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
     <>
-        <GlobalStyle />
-        <Layout>
-            <App />
-        </Layout>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <Layout>
+                <App />
+            </Layout>
+        </ThemeProvider>
+        ,
     </>,
 );
