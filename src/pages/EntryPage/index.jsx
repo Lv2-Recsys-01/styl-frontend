@@ -4,9 +4,7 @@ import Login from "../../components/Login/login";
 function EntryPage() {
     return (
         <div>
-            <p>
-                <Login></Login>
-            </p>
+            <Login></Login>
         </div>
     );
 }

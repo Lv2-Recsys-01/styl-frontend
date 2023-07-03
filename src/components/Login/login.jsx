@@ -26,6 +26,10 @@ function Login({ closeModal }) {
         setConfirm(value);
     };
 
+    const isSignUpDisabled = id.length < 4 || password.length !== 4;
+
+    const isSignInDisabled = id.length < 4 || password.length !== 4 || confirm.length !== 4;
+
     const handleLogin = () => {
         // TODO: 로그인 처리 로직 작성
         console.log(`ID: ${id}, Password: ${password}`);
@@ -57,11 +61,13 @@ function Login({ closeModal }) {
                         <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
                     </div>
                     <div className="box">
-                        Password
+                        Password (4자리 숫자)
                         <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} maxLength={4} />
                     </div>
                     <div className="box">
-                        <button onClick={handleLogin}>로그인</button>
+                        <button onClick={handleLogin} disabled={isSignUpDisabled} className={`signup-button ${isSignUpDisabled ? "disabled" : ""}`}>
+                            로그인
+                        </button>
                     </div>
 
                     <div className="option">
@@ -104,7 +110,9 @@ function Login({ closeModal }) {
                         <input type="password" placeholder="Confirm Password" value={confirm} onChange={handleConfirmChange} maxLength={4} />
                     </div>
                     <div className="box">
-                        <button onClick={handleSignin}>회원가입</button>
+                        <button onClick={handleSignin} disabled={isSignInDisabled} className={`signin-button ${isSignInDisabled ? "disabled" : ""}`}>
+                            회원가입
+                        </button>
                     </div>
 
                     <div className="option">
