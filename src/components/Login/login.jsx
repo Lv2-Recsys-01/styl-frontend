@@ -28,7 +28,7 @@ function Login({ closeModal }) {
 
     const isSignUpDisabled = id.length < 4 || password.length !== 4;
 
-    const isSignInDisabled = id.length < 4 || password.length !== 4 || confirm.length !== 4;
+    const isSignInDisabled = id.length < 4 || password.length !== 4 || confirm.length !== 4 || password !== confirm;
 
     const handleLogin = () => {
         // TODO: 로그인 처리 로직 작성
