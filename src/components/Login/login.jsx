@@ -11,10 +11,35 @@ function Login({ closeModal }) {
     const [mode, setMode] = useState("login");
     const [confirm, setConfirm] = useState("");
 
+    const handleIdChange = (e) => {
+        const value = e.target.value.replace(/[^a-z0-9]/g, ""); // Using lowercase letters and numbers
+        setId(value);
+    };
+
+    const handlePasswordChange = (e) => {
+        const value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+        setPassword(value);
+    };
+
+    const handleConfirmChange = (e) => {
+        const value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+        setConfirm(value);
+    };
+
     const handleLogin = () => {
         // TODO: 로그인 처리 로직 작성
         console.log(`ID: ${id}, Password: ${password}`);
         // 로그인했으면 통과
+
+        //실패시 재시도
+        setTitle("wrong");
+        setPassword("");
+        setConfirm("");
+    };
+
+    const handleSignin = () => {
+        // TODO: 회원가입 처리 로직 작성
+        console.log(`ID: ${id}, Password: ${password}`);
 
         //실패시 재시도
         setTitle("wrong");
@@ -29,11 +54,11 @@ function Login({ closeModal }) {
                     {title === "wrong" ? <h2 className={`wrong`}>다시 시도해주세요!</h2> : <h2 className="title">10초면 가입할 수 있어요!</h2>}
                     <div className="box">
                         ID
-                        <input type="text" placeholder="ID" value={id} onChange={(e) => setId(e.target.value)} maxLength={10} />
+                        <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
                     </div>
                     <div className="box">
                         Password
-                        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} maxLength={4} />
+                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} maxLength={4} />
                     </div>
                     <div className="box">
                         <button onClick={handleLogin}>로그인</button>
@@ -68,18 +93,18 @@ function Login({ closeModal }) {
                     {title === "wrong" ? <h2 className={`wrong`}>다시 시도해주세요!</h2> : <h2 className="title">10초면 가입할 수 있어요!</h2>}
                     <div className="box">
                         ID
-                        <input type="text" placeholder="숫자와 소문자만 사용 가능합니다." value={id} onChange={(e) => setId(e.target.value)} maxLength={10} />
+                        <input type="text" placeholder="숫자와 소문자만 사용 가능합니다." value={id} onChange={handleIdChange} maxLength={10} />
                     </div>
                     <div className="box">
                         Password
-                        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} maxLength={4} />
+                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} maxLength={4} />
                     </div>
                     <div className="box">
                         Confirm Password
-                        <input type="password" placeholder="Confirm Password" value={confirm} onChange={(e) => setConfirm(e.target.value)} maxLength={4} />
+                        <input type="password" placeholder="Confirm Password" value={confirm} onChange={handleConfirmChange} maxLength={4} />
                     </div>
                     <div className="box">
-                        <button onClick={handleLogin}>회원가입</button>
+                        <button onClick={handleSignin}>회원가입</button>
                     </div>
 
                     <div className="option">
