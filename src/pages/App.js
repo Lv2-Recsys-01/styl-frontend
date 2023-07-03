@@ -1,5 +1,4 @@
 import React from "react";
-import GlobalStyle from "../styles/globalStyle";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Journey from "./Journey";
 import EntryPage from "./EntryPage";
@@ -23,10 +22,9 @@ const router = createBrowserRouter([
 
 function App() {
     return (
-        <React.Fragment>
-            <GlobalStyle />
+        <>
             <RouterProvider router={router} />
-        </React.Fragment>
+        </>
     );
 }
 

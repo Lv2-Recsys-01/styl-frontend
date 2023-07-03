@@ -1,13 +1,27 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-    * {
-        box-sizing:border-box; 
-    }
+    html,
     body {
-        margin: 0;
         padding: 0;
-        display: relative;
+        margin: 0;
+        min-height: 100%;
+        width: 100%;
+        font-family: "Noto Sans KR", sans-serif;
+        background-color: #fbfbfb;
+    }
+
+    html {
+        position: relative;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    * {
+        box-sizing: border-box;
     }
 `;
 
