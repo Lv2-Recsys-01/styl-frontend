@@ -2,7 +2,11 @@ import React from "react";
 import "./layout.css";
 
 function Header() {
-    return <div>this is header</div>;
+    return (
+        <div className="header">
+            <div className="wrapper">this is header</div>
+        </div>
+    );
 }
 
 function Footer() {
