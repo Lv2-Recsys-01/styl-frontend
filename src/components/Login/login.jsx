@@ -92,11 +92,11 @@ function Login({ closeModal }) {
                 <div className="background">
                     {title === "wrong" ? <h2 className={`wrong`}>다시 시도해주세요!</h2> : <h2 className="title">10초면 가입할 수 있어요!</h2>}
                     <div className="box">
-                        ID
-                        <input type="text" placeholder="숫자와 소문자만 사용 가능합니다." value={id} onChange={handleIdChange} maxLength={10} />
+                        ID (10자리 이내, 소문자와 숫자)
+                        <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
                     </div>
                     <div className="box">
-                        Password
+                        Password (4자리 숫자)
                         <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} maxLength={4} />
                     </div>
                     <div className="box">
