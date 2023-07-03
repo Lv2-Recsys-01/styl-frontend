@@ -10,7 +10,7 @@ const S = {
     GridItem: styled.div`
         position: relative;
         width: 100%;
-        padding-top: calc(162% / 1); /* 황금비 1.618의 근사값. 가로 대비 세로의 높이 */
+        padding-top: 162%; /* 황금비 1.618의 근사값. 가로 대비 세로의 높이 */
         overflow: hidden;
         border-radius: 12px;
         border: 2px solid red;
@@ -27,14 +27,15 @@ const S = {
 };
 
 function getRandomNumber() {
-    var min = Math.ceil(300 / 100); // 3
-    var max = Math.floor(600 / 100); // 6
-    var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    const min = Math.ceil(300 / 100); // 3
+    const max = Math.floor(600 / 100); // 6
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     return randomNumber * 100;
 }
 
 function ImageGridView() {
-    const arr = new Array(12).fill(0);
+    const arr = new Array(7).fill(0);
+
     return (
         <S.GridWrapper>
             {arr.map((_, idx) => {
