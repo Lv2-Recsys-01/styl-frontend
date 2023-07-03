@@ -76,7 +76,7 @@ function Login({ closeModal }) {
                     </div>
                     <div className="box">
                         Confirm Password
-                        <input type="confirm" placeholder="Confirm Password" value={confirm} onChange={(e) => setConfirm(e.target.value)} maxLength={4} />
+                        <input type="password" placeholder="Confirm Password" value={confirm} onChange={(e) => setConfirm(e.target.value)} maxLength={4} />
                     </div>
                     <div className="box">
                         <button onClick={handleLogin}>회원가입</button>
