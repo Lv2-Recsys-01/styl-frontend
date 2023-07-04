@@ -54,16 +54,16 @@ function Login({ closeModal = () => {} }) {
         setError("");
     };
 
-    const loginValidationCondition = id.length >= 4 || password.length === 4;
-    const signinValidationCondition =
-        id.length >= 4 || password.length === 4 || confirm.length === 4 || password === confirm;
+    const checkLoginIneligibility = id.length < 4 || password.length !== 4;
+    const checkSigninIneligibility =
+        id.length < 4 || password.length !== 4 || confirm.length !== 4 || password !== confirm;
     const isSignInMode = modalMode === "signin";
     const isLogInMode = modalMode === "login";
 
     const handleLogin = () => {
         console.log(`login => ID: ${id}, Password: ${password}`);
 
-        if (!loginValidationCondition) {
+        if (checkLoginIneligibility) {
             clearInput();
             setError("검증에 실패했어요");
         }
@@ -72,7 +72,7 @@ function Login({ closeModal = () => {} }) {
     const handleSignin = () => {
         console.log(`signin => ID: ${id}, Password: ${password}`);
 
-        if (!signinValidationCondition) {
+        if (checkSigninIneligibility) {
             clearInput();
             setError("검증에 실패했어요");
         }
@@ -90,7 +90,7 @@ function Login({ closeModal = () => {} }) {
                 <h2 className="title">10초면 가입할 수 있어요!</h2>
                 <div className="box">
                     ID
-                    <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
+                    <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={20} />
                 </div>
                 <div className="box">
                     Password (4자리 숫자)
@@ -120,7 +120,7 @@ function Login({ closeModal = () => {} }) {
                     <div className="box">
                         <button
                             onClick={handleLogin}
-                            className={`signup-button ${loginValidationCondition ? "disabled" : ""}`}
+                            className={`signup-button ${checkLoginIneligibility ? "disabled" : ""}`}
                         >
                             로그인
                         </button>
@@ -130,7 +130,7 @@ function Login({ closeModal = () => {} }) {
                     <div className="box">
                         <button
                             onClick={handleSignin}
-                            className={`signin-button ${signinValidationCondition ? "disabled" : ""}`}
+                            className={`signin-button ${checkSigninIneligibility ? "disabled" : ""}`}
                         >
                             회원가입
                         </button>
