@@ -3,81 +3,83 @@
     top: 0;
     left: 0;
     width: 100%;
+
     height: 100%;
     background-color: rgba(256, 256, 256, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .background {
-    background-color: rgba(221,204,196,0.8);
-    width:80%;
-    height:550px;
+}
+
+.background {
+    background-color: rgba(221, 204, 196, 0.8);
+    width: 80%;
+    max-width: 480px;
+    min-width: 320px;
+    height: 550px;
     padding: 25px;
     border-radius: 10px;
     opacity: 0.8;
-  }
+}
 
-  .title{
+.title {
     text-align: center;
-    color:black;
-    font-size:20px;
+    color: black;
+    font-size: 20px;
     margin-bottom: 40px;
-    margin-top:40px;
-  }
+    margin-top: 40px;
+}
 
-  .wrong{
+.wrong {
     text-align: center;
-    color:red;
-    font-size:25px;
+    color: red;
+    font-size: 25px;
     margin-bottom: 40px;
-    margin-top:40px;
-  }
+    margin-top: 40px;
+}
 
-  .box{
-    margin:10px;
-  }
+.box {
+    margin: 10px;
+}
 
-  input {
-    width:100%;
-    height:50px;
+input {
+    width: 100%;
+    height: 50px;
     border-radius: 10px;
-    border-color: rgba(221,204,196,0.8);
-  }
-  
-  button {
-    background-color:var(--orange);
+    border-color: rgba(221, 204, 196, 0.8);
+}
+
+button {
+    background-color: var(--orange);
     padding: 15px;
     border-radius: 10px;
     cursor: pointer;
     width: 100%;
-  }
+}
 
-  .signup-button.disabled {
+.signup-button.disabled {
     cursor: not-allowed;
-    background-color:rgba(110,102,98,0.8);
-  }
-  
-  .signup-button:hover:not(.disabled) {
-    background-color:  orange;
-  }
-  
-  .signin-button.disabled {
+    background-color: rgba(110, 102, 98, 0.8);
+}
+
+.signup-button:hover:not(.disabled) {
+    background-color: orange;
+}
+
+.signin-button.disabled {
     cursor: not-allowed;
-    background-color:rgba(110,102,98,0.8);
-  }
-  
-  .signin-button:hover:not(.disabled) {
-    background-color:  orange;
-  }
-  
-  
-  .option {
+    background-color: rgba(110, 102, 98, 0.8);
+}
+
+.signin-button:hover:not(.disabled) {
+    background-color: orange;
+}
+
+.option {
     margin-top: 50px;
     margin-bottom: 50px;
-    font-size:20px;
+    font-size: 20px;
     color: brown;
     text-align: center;
     text-decoration: underline;
-  }
+}
