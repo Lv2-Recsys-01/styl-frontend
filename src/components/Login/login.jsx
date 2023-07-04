@@ -16,7 +16,6 @@ function GoToLoginLessNav() {
 function Login({ closeModal }) {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
-    const [title, setTitle] = useState("first");
     const [mode, setMode] = useState("login");
     const [confirm, setConfirm] = useState("");
 
@@ -45,7 +44,6 @@ function Login({ closeModal }) {
         // 로그인했으면 통과
 
         //실패시 재시도
-        setTitle("wrong");
         setPassword("");
         setConfirm("");
     };
@@ -55,7 +53,6 @@ function Login({ closeModal }) {
         console.log(`ID: ${id}, Password: ${password}`);
 
         //실패시 재시도
-        setTitle("wrong");
         setPassword("");
         setConfirm("");
     };
@@ -70,11 +67,7 @@ function Login({ closeModal }) {
                 overlayClassName="modal-overlay"
             >
                 <div className="background">
-                    {title === "wrong" ? (
-                        <h2 className={`wrong`}>다시 시도해주세요!</h2>
-                    ) : (
-                        <h2 className="title">10초면 가입할 수 있어요!</h2>
-                    )}
+                    <h2 className="title">10초면 가입할 수 있어요!</h2>
                     <div className="box">
                         ID
                         <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
@@ -101,18 +94,17 @@ function Login({ closeModal }) {
 
                     <div className="option">
                         <p>
-                            <a
+                            <div
                                 onClick={function (event) {
                                     event.preventDefault();
                                     setMode("signin");
                                     setId("");
                                     setPassword("");
                                     setConfirm("");
-                                    setTitle("first");
                                 }}
                             >
                                 회원가입할래요
-                            </a>
+                            </div>
                         </p>
                         <GoToLoginLessNav />
                     </div>
@@ -129,11 +121,7 @@ function Login({ closeModal }) {
                 overlayClassName="modal-overlay"
             >
                 <div className="background">
-                    {title === "wrong" ? (
-                        <h2 className={`wrong`}>다시 시도해주세요!</h2>
-                    ) : (
-                        <h2 className="title">10초면 가입할 수 있어요!</h2>
-                    )}
+                    <h2 className="title">10초면 가입할 수 있어요!</h2>
                     <div className="box">
                         ID (10자리 이내, 소문자와 숫자)
                         <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
@@ -170,18 +158,17 @@ function Login({ closeModal }) {
 
                     <div className="option">
                         <p>
-                            <a
+                            <div
                                 onClick={function (event) {
                                     event.preventDefault();
                                     setMode("login");
                                     setId("");
                                     setPassword("");
                                     setConfirm("");
-                                    setTitle("first");
                                 }}
                             >
                                 로그인할래요
-                            </a>
+                            </div>
                         </p>
                         <GoToLoginLessNav />
                     </div>
