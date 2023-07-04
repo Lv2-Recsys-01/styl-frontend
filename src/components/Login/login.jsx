@@ -51,14 +51,17 @@ function Login({ closeModal = () => {} }) {
         }
         setPassword("");
         setConfirm("");
+        setError("");
     };
 
     const loginValidationCondition = id.length >= 4 || password.length === 4;
     const signinValidationCondition =
         id.length >= 4 || password.length === 4 || confirm.length === 4 || password === confirm;
+    const isSignInMode = modalMode === "signin";
+    const isLogInMode = modalMode === "login";
 
     const handleLogin = () => {
-        console.log(`ID: ${id}, Password: ${password}`);
+        console.log(`login => ID: ${id}, Password: ${password}`);
 
         if (!loginValidationCondition) {
             clearInput();
@@ -67,7 +70,7 @@ function Login({ closeModal = () => {} }) {
     };
 
     const handleSignin = () => {
-        console.log(`ID: ${id}, Password: ${password}`);
+        console.log(`signin => ID: ${id}, Password: ${password}`);
 
         if (!signinValidationCondition) {
             clearInput();
@@ -83,56 +86,23 @@ function Login({ closeModal = () => {} }) {
             className="modal"
             overlayClassName="modal-overlay"
         >
-            {modalMode === "login" ? (
-                <div className="background">
-                    <h2 className="title">10초면 가입할 수 있어요!</h2>
-                    <div className="box">
-                        ID
-                        <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
-                    </div>
-                    <div className="box">
-                        Password (4자리 숫자)
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                            maxLength={4}
-                        />
-                    </div>
-                    <div className="box">
-                        <button
-                            onClick={handleLogin}
-                            className={`signup-button ${loginValidationCondition ? "disabled" : ""}`}
-                        >
-                            로그인
-                        </button>
-                    </div>
-
-                    {error && <p className="error">{error}</p>}
-
-                    <div className="option">
-                        <p onClick={handleToggleModalModeButton}>회원가입할래요</p>
-                        <GoToLoginLessNav />
-                    </div>
+            <div className="background">
+                <h2 className="title">10초면 가입할 수 있어요!</h2>
+                <div className="box">
+                    ID
+                    <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
                 </div>
-            ) : (
-                <div className="background">
-                    <h2 className="title">10초면 가입할 수 있어요!</h2>
-                    <div className="box">
-                        ID (10자리 이내, 소문자와 숫자)
-                        <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
-                    </div>
-                    <div className="box">
-                        Password (4자리 숫자)
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                            maxLength={4}
-                        />
-                    </div>
+                <div className="box">
+                    Password (4자리 숫자)
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        maxLength={4}
+                    />
+                </div>
+                {isSignInMode && (
                     <div className="box">
                         Confirm Password
                         <input
@@ -143,6 +113,20 @@ function Login({ closeModal = () => {} }) {
                             maxLength={4}
                         />
                     </div>
+                )}
+
+                {/* 로그인, 회원가입 제출 */}
+                {isLogInMode && (
+                    <div className="box">
+                        <button
+                            onClick={handleLogin}
+                            className={`signup-button ${loginValidationCondition ? "disabled" : ""}`}
+                        >
+                            로그인
+                        </button>
+                    </div>
+                )}
+                {isSignInMode && (
                     <div className="box">
                         <button
                             onClick={handleSignin}
@@ -151,15 +135,17 @@ function Login({ closeModal = () => {} }) {
                             회원가입
                         </button>
                     </div>
+                )}
 
-                    <div className="option">
-                        <p>
-                            <div onClick={handleToggleModalModeButton}>로그인할래요</div>
-                        </p>
-                        <GoToLoginLessNav />
-                    </div>
+                {/* 에러 섹션 */}
+                {error && <p className="error">{error}</p>}
+
+                {/* modal Mode 전환 */}
+                <div className="option">
+                    <p onClick={handleToggleModalModeButton}>{isLogInMode ? "회원가입할래요" : "회원가입"}</p>
+                    <GoToLoginLessNav />
                 </div>
-            )}
+            </div>
         </Modal>
     );
 }
