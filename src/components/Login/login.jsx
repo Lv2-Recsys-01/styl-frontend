@@ -13,7 +13,7 @@ function GoToLoginLessNav() {
     );
 }
 
-function Login({ closeModal }) {
+function Login({ closeModal = () => {} }) {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
     const [modalMode, setmodalMode] = useState("login");
@@ -35,7 +35,6 @@ function Login({ closeModal }) {
     };
 
     const isSignUpDisabled = id.length < 4 || password.length !== 4;
-
     const isSignInDisabled = id.length < 4 || password.length !== 4 || confirm.length !== 4 || password !== confirm;
 
     const handleLogin = () => {
@@ -61,7 +60,7 @@ function Login({ closeModal }) {
         <Modal
             isOpen={true}
             onRequestClose={closeModal}
-            shouldCloseOnOverlayClick={true}
+            shouldCloseOnOverlayClick={false}
             className="modal"
             overlayClassName="modal-overlay"
         >
