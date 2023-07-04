@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
+
+const PAGE_SIZE = 10;
 
 const S = {
     GridWrapper: styled.div`
@@ -33,12 +35,43 @@ function getRandomNumber() {
     return randomNumber * 100;
 }
 
-function GridItem({ children, key }) {
-    return <S.GridItem key={key}>{children}</S.GridItem>;
-}
+const GridItem = ({ children, index }) => {
+    return <S.GridItem key={index}>{children}</S.GridItem>;
+};
 
 function ImageGridView() {
-    const arr = new Array(7).fill(0);
+    const arr = new Array(PAGE_SIZE + 1).fill(0);
+    const gridViewWrapperBottomDomRef = useRef(null);
+    const currentPage = useRef(0);
+    const totalPage = useRef(0);
+    const [outfits, setOutfits] = useState([]);
+
+    useEffect(() => {
+        let observer;
+
+        if (gridViewWrapperBottomDomRef.current) {
+            const options = {
+                root: null, // viewport
+                rootMargin: "0px 0px 10px 0px",
+                threshold: [0.25],
+            };
+            observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        console.log("isIntersecting");
+                        // should fetch data
+                    }
+                });
+            }, options);
+
+            if (gridViewWrapperBottomDomRef.current) {
+                observer.observe(gridViewWrapperBottomDomRef.current);
+            }
+        }
+        return () => {
+            observer.observe(gridViewWrapperBottomDomRef.current);
+        };
+    }, []);
 
     return (
         <S.GridWrapper>
@@ -51,6 +84,7 @@ function ImageGridView() {
                     </GridItem>
                 );
             })}
+            <div ref={gridViewWrapperBottomDomRef} />
         </S.GridWrapper>
     );
 }
