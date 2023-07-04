@@ -6,6 +6,4 @@ const delayPromise = (n, expectedData) => {
     });
 };
 
-export default {
-    delayPromise,
-};
+export { delayPromise };

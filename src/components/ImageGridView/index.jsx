@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
 
 const PAGE_SIZE = 10;
@@ -43,8 +43,13 @@ function ImageGridView() {
     const arr = new Array(PAGE_SIZE + 1).fill(0);
     const gridViewWrapperBottomDomRef = useRef(null);
     const currentPage = useRef(0);
-    const totalPage = useRef(0);
+    const totalPage = useRef(100);
     const [outfits, setOutfits] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useLayoutEffect(() => {
+        totalPage.current = 100;
+    });
 
     useEffect(() => {
         let observer;
@@ -57,9 +62,13 @@ function ImageGridView() {
             };
             observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        console.log("isIntersecting");
-                        // should fetch data
+                    if (entry.isIntersecting && !isLoading && currentPage.current < totalPage.current) {
+                        console.log("should fetch data");
+                        setIsLoading(true);
+
+                        // TODO: fetch data
+
+                        setIsLoading(false);
                     }
                 });
             }, options);
