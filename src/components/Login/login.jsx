@@ -16,7 +16,7 @@ function GoToLoginLessNav() {
 function Login({ closeModal }) {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
-    const [mode, setMode] = useState("login");
+    const [modalMode, setmodalMode] = useState("login");
     const [confirm, setConfirm] = useState("");
 
     const handleIdChange = (e) => {
@@ -57,15 +57,15 @@ function Login({ closeModal }) {
         setConfirm("");
     };
 
-    if (mode === "login") {
-        return (
-            <Modal
-                isOpen={true}
-                onRequestClose={closeModal}
-                shouldCloseOnOverlayClick={true}
-                className="modal"
-                overlayClassName="modal-overlay"
-            >
+    return (
+        <Modal
+            isOpen={true}
+            onRequestClose={closeModal}
+            shouldCloseOnOverlayClick={true}
+            className="modal"
+            overlayClassName="modal-overlay"
+        >
+            {modalMode === "login" ? (
                 <div className="background">
                     <h2 className="title">10초면 가입할 수 있어요!</h2>
                     <div className="box">
@@ -96,7 +96,7 @@ function Login({ closeModal }) {
                         <p
                             onClick={function (event) {
                                 event.preventDefault();
-                                setMode("signin");
+                                setmodalMode("signin");
                                 setId("");
                                 setPassword("");
                                 setConfirm("");
@@ -107,17 +107,7 @@ function Login({ closeModal }) {
                         <GoToLoginLessNav />
                     </div>
                 </div>
-            </Modal>
-        );
-    } else if (mode === "signin") {
-        return (
-            <Modal
-                isOpen={true}
-                onRequestClose={closeModal}
-                shouldCloseOnOverlayClick={true}
-                className="modal"
-                overlayClassName="modal-overlay"
-            >
+            ) : (
                 <div className="background">
                     <h2 className="title">10초면 가입할 수 있어요!</h2>
                     <div className="box">
@@ -159,7 +149,7 @@ function Login({ closeModal }) {
                             <div
                                 onClick={function (event) {
                                     event.preventDefault();
-                                    setMode("login");
+                                    setmodalMode("login");
                                     setId("");
                                     setPassword("");
                                     setConfirm("");
@@ -171,9 +161,9 @@ function Login({ closeModal }) {
                         <GoToLoginLessNav />
                     </div>
                 </div>
-            </Modal>
-        );
-    }
+            )}
+        </Modal>
+    );
 }
 
 export default Login;
