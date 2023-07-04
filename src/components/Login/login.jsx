@@ -5,6 +5,14 @@ import { NavLink } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
+function GoToLoginLessNav() {
+    return (
+        <p>
+            <NavLink to="/journey">로그인 없이 사용할래요</NavLink>
+        </p>
+    );
+}
+
 function Login({ closeModal }) {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
@@ -106,9 +114,7 @@ function Login({ closeModal }) {
                                 회원가입할래요
                             </a>
                         </p>
-                        <p>
-                            <NavLink to="/journey">로그인 없이 사용할래요</NavLink>
-                        </p>
+                        <GoToLoginLessNav />
                     </div>
                 </div>
             </Modal>
@@ -177,9 +183,7 @@ function Login({ closeModal }) {
                                 로그인할래요
                             </a>
                         </p>
-                        <p>
-                            <NavLink to="/journey">로그인 없이 사용할래요</NavLink>
-                        </p>
+                        <GoToLoginLessNav />
                     </div>
                 </div>
             </Modal>
