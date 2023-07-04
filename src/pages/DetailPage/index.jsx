@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout, Space } from "antd";
 import "./index.css";
 import { ArrowLeftOutlined, CloseOutlined, HeartOutlined, HeartTwoTone, ShareAltOutlined } from "@ant-design/icons";
@@ -25,14 +25,23 @@ function DetailHeader() {
 }
 
 function DetailCodi() {
+    const [isLiked, setIsLiked] = useState(false);
+
+    const handleToggleLike = () => {
+        setIsLiked((prevIsLiked) => !prevIsLiked);
+    };
+
     return (
         <div>
             <img className="codi" src="sample_codi.png" alt="NoImg" />
-            <p>
-                <img className="logo" src="musinsa.png" alt="NoImg" />
-                <ShareAltOutlined />
-                <HeartOutlined />
-                <HeartTwoTone twoToneColor="red" />
+            <p className="options">
+                <img className="musinsa" src="musinsa.png" alt="NoImg" />
+                <ShareAltOutlined className="share" />
+                {isLiked ? (
+                    <HeartTwoTone className="heart" twoToneColor="red" onClick={handleToggleLike} />
+                ) : (
+                    <HeartOutlined className="heart" onClick={handleToggleLike} />
+                )}
             </p>
         </div>
     );
