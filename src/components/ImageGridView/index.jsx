@@ -33,6 +33,10 @@ function getRandomNumber() {
     return randomNumber * 100;
 }
 
+function GridItem({ children, key }) {
+    return <S.GridItem key={key}>{children}</S.GridItem>;
+}
+
 function ImageGridView() {
     const arr = new Array(7).fill(0);
 
@@ -42,9 +46,9 @@ function ImageGridView() {
                 const randomNumWidth = getRandomNumber();
                 const randomNumHeight = getRandomNumber();
                 return (
-                    <S.GridItem key={idx}>
-                        <img src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`} />
-                    </S.GridItem>
+                    <GridItem key={idx}>
+                        <img src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`} alt={idx} />
+                    </GridItem>
                 );
             })}
         </S.GridWrapper>
