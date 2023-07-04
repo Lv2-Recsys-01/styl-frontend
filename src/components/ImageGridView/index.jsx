@@ -53,8 +53,9 @@ function ImageGridView() {
 
     useEffect(() => {
         let observer;
+        const gridViewWrapperBottomDom = gridViewWrapperBottomDomRef.current;
 
-        if (gridViewWrapperBottomDomRef.current) {
+        if (gridViewWrapperBottomDom) {
             const options = {
                 root: null, // viewport
                 rootMargin: "0px 0px 10px 0px",
@@ -73,14 +74,14 @@ function ImageGridView() {
                 });
             }, options);
 
-            if (gridViewWrapperBottomDomRef.current) {
-                observer.observe(gridViewWrapperBottomDomRef.current);
+            if (gridViewWrapperBottomDom) {
+                observer.observe(gridViewWrapperBottomDom);
             }
         }
         return () => {
-            observer.observe(gridViewWrapperBottomDomRef.current);
+            observer.observe(gridViewWrapperBottomDom);
         };
-    }, []);
+    }, [isLoading]);
 
     return (
         <S.GridWrapper>
