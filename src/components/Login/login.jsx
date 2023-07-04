@@ -16,8 +16,9 @@ function GoToLoginLessNav() {
 function Login({ closeModal = () => {} }) {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
-    const [modalMode, setmodalMode] = useState("login");
+    const [modalMode, setModalMode] = useState("login");
     const [confirm, setConfirm] = useState("");
+    const [error, setError] = useState(false);
 
     const handleIdChange = (e) => {
         const value = e.target.value;
@@ -34,17 +35,23 @@ function Login({ closeModal = () => {} }) {
         setConfirm(value);
     };
 
-    const isSignUpDisabled = id.length < 4 || password.length !== 4;
+    const loginValidationCondition = id.length < 4 || password.length !== 4;
     const isSignInDisabled = id.length < 4 || password.length !== 4 || confirm.length !== 4 || password !== confirm;
+
+    const clearInput = () => {
+        setPassword("");
+        setConfirm("");
+    };
 
     const handleLogin = () => {
         // TODO: 로그인 처리 로직 작성
         console.log(`ID: ${id}, Password: ${password}`);
-        // 로그인했으면 통과
 
-        //실패시 재시도
-        setPassword("");
-        setConfirm("");
+        // validation
+        if (id.length < 4 || password.length !== 4) {
+            //실패시 재시도
+            clearInput();
+        }
     };
 
     const handleSignin = () => {
@@ -52,8 +59,7 @@ function Login({ closeModal = () => {} }) {
         console.log(`ID: ${id}, Password: ${password}`);
 
         //실패시 재시도
-        setPassword("");
-        setConfirm("");
+        clearInput();
     };
 
     return (
@@ -84,8 +90,8 @@ function Login({ closeModal = () => {} }) {
                     <div className="box">
                         <button
                             onClick={handleLogin}
-                            disabled={isSignUpDisabled}
-                            className={`signup-button ${isSignUpDisabled ? "disabled" : ""}`}
+                            disabled={loginValidationCondition}
+                            className={`signup-button ${loginValidationCondition ? "disabled" : ""}`}
                         >
                             로그인
                         </button>
@@ -95,7 +101,7 @@ function Login({ closeModal = () => {} }) {
                         <p
                             onClick={function (event) {
                                 event.preventDefault();
-                                setmodalMode("signin");
+                                setModalMode("signin");
                                 setId("");
                                 setPassword("");
                                 setConfirm("");
@@ -148,7 +154,7 @@ function Login({ closeModal = () => {} }) {
                             <div
                                 onClick={function (event) {
                                     event.preventDefault();
-                                    setmodalMode("login");
+                                    setModalMode("login");
                                     setId("");
                                     setPassword("");
                                     setConfirm("");
