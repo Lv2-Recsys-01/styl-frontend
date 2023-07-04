@@ -35,14 +35,27 @@ function Login({ closeModal = () => {} }) {
         setConfirm(value);
     };
 
-    const loginValidationCondition = id.length < 4 || password.length !== 4;
-    const signinValidationCondition =
-        id.length < 4 || password.length !== 4 || confirm.length !== 4 || password !== confirm;
+    const handleToggleModalModeButton = (e) => {
+        e.preventDefault();
+        if (modalMode === "login") {
+            setModalMode("signin");
+        } else {
+            setModalMode("login");
+        }
+        clearInput(true);
+    };
 
-    const clearInput = () => {
+    const clearInput = (shouldClearId = false) => {
+        if (shouldClearId) {
+            setId("");
+        }
         setPassword("");
         setConfirm("");
     };
+
+    const loginValidationCondition = id.length < 4 || password.length !== 4;
+    const signinValidationCondition =
+        id.length < 4 || password.length !== 4 || confirm.length !== 4 || password !== confirm;
 
     const handleLogin = () => {
         // TODO: 로그인 처리 로직 작성
@@ -102,17 +115,7 @@ function Login({ closeModal = () => {} }) {
                     {error && <p className="error">{error}</p>}
 
                     <div className="option">
-                        <p
-                            onClick={function (event) {
-                                event.preventDefault();
-                                setModalMode("signin");
-                                setId("");
-                                setPassword("");
-                                setConfirm("");
-                            }}
-                        >
-                            회원가입할래요
-                        </p>
+                        <p onClick={handleToggleModalModeButton}>회원가입할래요</p>
                         <GoToLoginLessNav />
                     </div>
                 </div>
@@ -155,17 +158,7 @@ function Login({ closeModal = () => {} }) {
 
                     <div className="option">
                         <p>
-                            <div
-                                onClick={function (event) {
-                                    event.preventDefault();
-                                    setModalMode("login");
-                                    setId("");
-                                    setPassword("");
-                                    setConfirm("");
-                                }}
-                            >
-                                로그인할래요
-                            </div>
+                            <div onClick={handleToggleModalModeButton}>로그인할래요</div>
                         </p>
                         <GoToLoginLessNav />
                     </div>
