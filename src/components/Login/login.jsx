@@ -53,9 +53,9 @@ function Login({ closeModal = () => {} }) {
         setConfirm("");
     };
 
-    const loginValidationCondition = id.length < 4 || password.length !== 4;
+    const loginValidationCondition = id.length >= 4 || password.length === 4;
     const signinValidationCondition =
-        id.length < 4 || password.length !== 4 || confirm.length !== 4 || password !== confirm;
+        id.length >= 4 || password.length === 4 || confirm.length === 4 || password === confirm;
 
     const handleLogin = () => {
         // TODO: 로그인 처리 로직 작성
