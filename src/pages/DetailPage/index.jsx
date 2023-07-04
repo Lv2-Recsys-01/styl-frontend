@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Layout, Space } from "antd";
 import "./index.css";
 import { ArrowLeftOutlined, CloseOutlined, HeartOutlined, HeartTwoTone, ShareAltOutlined } from "@ant-design/icons";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const { Header, Footer, Content } = Layout;
 
