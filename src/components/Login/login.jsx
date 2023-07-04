@@ -36,7 +36,8 @@ function Login({ closeModal = () => {} }) {
     };
 
     const loginValidationCondition = id.length < 4 || password.length !== 4;
-    const isSignInDisabled = id.length < 4 || password.length !== 4 || confirm.length !== 4 || password !== confirm;
+    const signinValidationCondition =
+        id.length < 4 || password.length !== 4 || confirm.length !== 4 || password !== confirm;
 
     const clearInput = () => {
         setPassword("");
@@ -47,10 +48,9 @@ function Login({ closeModal = () => {} }) {
         // TODO: 로그인 처리 로직 작성
         console.log(`ID: ${id}, Password: ${password}`);
 
-        // validation
-        if (id.length < 4 || password.length !== 4) {
-            //실패시 재시도
+        if (!loginValidationCondition) {
             clearInput();
+            setError("검증에 실패했어요");
         }
     };
 
@@ -58,8 +58,10 @@ function Login({ closeModal = () => {} }) {
         // TODO: 회원가입 처리 로직 작성
         console.log(`ID: ${id}, Password: ${password}`);
 
-        //실패시 재시도
-        clearInput();
+        if (!signinValidationCondition) {
+            clearInput();
+            setError("검증에 실패했어요");
+        }
     };
 
     return (
@@ -90,12 +92,14 @@ function Login({ closeModal = () => {} }) {
                     <div className="box">
                         <button
                             onClick={handleLogin}
-                            disabled={loginValidationCondition}
+                            // disabled={loginValidationCondition}
                             className={`signup-button ${loginValidationCondition ? "disabled" : ""}`}
                         >
                             로그인
                         </button>
                     </div>
+
+                    {error && <p className="error">{error}</p>}
 
                     <div className="option">
                         <p
@@ -142,8 +146,8 @@ function Login({ closeModal = () => {} }) {
                     <div className="box">
                         <button
                             onClick={handleSignin}
-                            disabled={isSignInDisabled}
-                            className={`signin-button ${isSignInDisabled ? "disabled" : ""}`}
+                            // disabled={signinValidationCondition}
+                            className={`signin-button ${signinValidationCondition ? "disabled" : ""}`}
                         >
                             회원가입
                         </button>
