@@ -58,7 +58,6 @@ function Login({ closeModal = () => {} }) {
         id.length >= 4 || password.length === 4 || confirm.length === 4 || password === confirm;
 
     const handleLogin = () => {
-        // TODO: 로그인 처리 로직 작성
         console.log(`ID: ${id}, Password: ${password}`);
 
         if (!loginValidationCondition) {
@@ -68,7 +67,6 @@ function Login({ closeModal = () => {} }) {
     };
 
     const handleSignin = () => {
-        // TODO: 회원가입 처리 로직 작성
         console.log(`ID: ${id}, Password: ${password}`);
 
         if (!signinValidationCondition) {
@@ -105,7 +103,6 @@ function Login({ closeModal = () => {} }) {
                     <div className="box">
                         <button
                             onClick={handleLogin}
-                            // disabled={loginValidationCondition}
                             className={`signup-button ${loginValidationCondition ? "disabled" : ""}`}
                         >
                             로그인
@@ -149,7 +146,6 @@ function Login({ closeModal = () => {} }) {
                     <div className="box">
                         <button
                             onClick={handleSignin}
-                            // disabled={signinValidationCondition}
                             className={`signin-button ${signinValidationCondition ? "disabled" : ""}`}
                         >
                             회원가입
