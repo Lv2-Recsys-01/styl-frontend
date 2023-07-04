@@ -1,4 +1,4 @@
 # styl-front
 
-`npm install`
+`npm install`  
 `npm start`

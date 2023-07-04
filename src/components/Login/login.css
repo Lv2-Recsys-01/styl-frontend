@@ -49,7 +49,7 @@ input {
     border-color: rgba(221, 204, 196, 0.8);
 }
 
-button {
+.box button {
     background-color: var(--orange);
     padding: 15px;
     border-radius: 10px;

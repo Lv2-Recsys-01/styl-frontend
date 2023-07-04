@@ -43,7 +43,7 @@ function ImageGridView() {
                 const randomNumHeight = getRandomNumber();
                 return (
                     <S.GridItem key={idx}>
-                        <img src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`} />
+                        <img src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`} alt={idx} />
                     </S.GridItem>
                 );
             })}
