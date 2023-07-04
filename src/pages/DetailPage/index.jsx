@@ -1,16 +1,26 @@
 import React from "react";
 import { Layout, Space } from "antd";
 import "./index.css";
-import { ArrowLeftOutlined, CloseOutlined, HeartOutlined, HeartFilled, ShareAltOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, CloseOutlined, HeartOutlined, HeartTwoTone, ShareAltOutlined } from "@ant-design/icons";
+import { useNavigate, Link } from "react-router-dom";
 
 const { Header, Footer, Content } = Layout;
 
 function DetailHeader() {
+    const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
+    const goJourney = () => {
+        navigate("/journey");
+    };
+
     return (
-        <div>
-            <ArrowLeftOutlined />
-            <CloseOutlined />
-        </div>
+        <>
+            <ArrowLeftOutlined className="back" onClick={goBack} />
+            <CloseOutlined className="close" onClick={goJourney} />
+        </>
     );
 }
 
@@ -22,7 +32,7 @@ function DetailCodi() {
                 <img className="logo" src="musinsa.png" alt="NoImg" />
                 <ShareAltOutlined />
                 <HeartOutlined />
-                <HeartFilled />
+                <HeartTwoTone twoToneColor="red" />
             </p>
         </div>
     );
