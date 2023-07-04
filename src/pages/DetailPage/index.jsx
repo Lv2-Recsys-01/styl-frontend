@@ -1,17 +1,29 @@
 import React from "react";
 import { Layout, Space } from "antd";
 import "./index.css";
+import { ArrowLeftOutlined, CloseOutlined, HeartOutlined, HeartFilled, ShareAltOutlined } from "@ant-design/icons";
 
 const { Header, Footer, Content } = Layout;
 
 function DetailHeader() {
-    return <div>Header</div>;
+    return (
+        <div>
+            <ArrowLeftOutlined />
+            <CloseOutlined />
+        </div>
+    );
 }
 
 function DetailCodi() {
     return (
         <div>
-            <img src="sample_codi.png" alt="NoImg" />
+            <img className="codi" src="sample_codi.png" alt="NoImg" />
+            <p>
+                <img className="logo" src="musinsa.png" alt="NoImg" />
+                <ShareAltOutlined />
+                <HeartOutlined />
+                <HeartFilled />
+            </p>
         </div>
     );
 }

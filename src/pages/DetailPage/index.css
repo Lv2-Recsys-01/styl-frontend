@@ -9,7 +9,17 @@
   
   .detail .content {
     text-align: center;
+    width:100%;
+    margin-bottom: 20px;
+    margin-top: 10px;
     background-color: var(--background);
+  }
+  
+  .detail .content .codi{
+
+    border-radius: 10px;
+    border: 2px solid red;
+    width:50%;
   }
   
   
