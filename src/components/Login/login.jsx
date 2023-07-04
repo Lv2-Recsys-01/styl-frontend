@@ -12,17 +12,17 @@ function Login({ closeModal }) {
     const [confirm, setConfirm] = useState("");
 
     const handleIdChange = (e) => {
-        const value = e.target.value.replace(/[^a-z0-9]/g, ""); // Using lowercase letters and numbers
+        const value = e.target.value;
         setId(value);
     };
 
     const handlePasswordChange = (e) => {
-        const value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+        const value = e.target.value;
         setPassword(value);
     };
 
     const handleConfirmChange = (e) => {
-        const value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+        const value = e.target.value;
         setConfirm(value);
     };
 
@@ -53,19 +53,39 @@ function Login({ closeModal }) {
 
     if (mode === "login") {
         return (
-            <Modal isOpen={true} onRequestClose={closeModal} shouldCloseOnOverlayClick={true} className="modal" overlayClassName="modal-overlay">
+            <Modal
+                isOpen={true}
+                onRequestClose={closeModal}
+                shouldCloseOnOverlayClick={true}
+                className="modal"
+                overlayClassName="modal-overlay"
+            >
                 <div className="background">
-                    {title === "wrong" ? <h2 className={`wrong`}>다시 시도해주세요!</h2> : <h2 className="title">10초면 가입할 수 있어요!</h2>}
+                    {title === "wrong" ? (
+                        <h2 className={`wrong`}>다시 시도해주세요!</h2>
+                    ) : (
+                        <h2 className="title">10초면 가입할 수 있어요!</h2>
+                    )}
                     <div className="box">
                         ID
                         <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
                     </div>
                     <div className="box">
                         Password (4자리 숫자)
-                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} maxLength={4} />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={handlePasswordChange}
+                            maxLength={4}
+                        />
                     </div>
                     <div className="box">
-                        <button onClick={handleLogin} disabled={isSignUpDisabled} className={`signup-button ${isSignUpDisabled ? "disabled" : ""}`}>
+                        <button
+                            onClick={handleLogin}
+                            disabled={isSignUpDisabled}
+                            className={`signup-button ${isSignUpDisabled ? "disabled" : ""}`}
+                        >
                             로그인
                         </button>
                     </div>
@@ -94,23 +114,49 @@ function Login({ closeModal }) {
         );
     } else if (mode === "signin") {
         return (
-            <Modal isOpen={true} onRequestClose={closeModal} shouldCloseOnOverlayClick={true} className="modal" overlayClassName="modal-overlay">
+            <Modal
+                isOpen={true}
+                onRequestClose={closeModal}
+                shouldCloseOnOverlayClick={true}
+                className="modal"
+                overlayClassName="modal-overlay"
+            >
                 <div className="background">
-                    {title === "wrong" ? <h2 className={`wrong`}>다시 시도해주세요!</h2> : <h2 className="title">10초면 가입할 수 있어요!</h2>}
+                    {title === "wrong" ? (
+                        <h2 className={`wrong`}>다시 시도해주세요!</h2>
+                    ) : (
+                        <h2 className="title">10초면 가입할 수 있어요!</h2>
+                    )}
                     <div className="box">
                         ID (10자리 이내, 소문자와 숫자)
                         <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={10} />
                     </div>
                     <div className="box">
                         Password (4자리 숫자)
-                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} maxLength={4} />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={handlePasswordChange}
+                            maxLength={4}
+                        />
                     </div>
                     <div className="box">
                         Confirm Password
-                        <input type="password" placeholder="Confirm Password" value={confirm} onChange={handleConfirmChange} maxLength={4} />
+                        <input
+                            type="password"
+                            placeholder="Confirm Password"
+                            value={confirm}
+                            onChange={handleConfirmChange}
+                            maxLength={4}
+                        />
                     </div>
                     <div className="box">
-                        <button onClick={handleSignin} disabled={isSignInDisabled} className={`signin-button ${isSignInDisabled ? "disabled" : ""}`}>
+                        <button
+                            onClick={handleSignin}
+                            disabled={isSignInDisabled}
+                            className={`signin-button ${isSignInDisabled ? "disabled" : ""}`}
+                        >
                             회원가입
                         </button>
                     </div>
