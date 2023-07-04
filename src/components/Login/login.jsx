@@ -93,18 +93,16 @@ function Login({ closeModal }) {
                     </div>
 
                     <div className="option">
-                        <p>
-                            <div
-                                onClick={function (event) {
-                                    event.preventDefault();
-                                    setMode("signin");
-                                    setId("");
-                                    setPassword("");
-                                    setConfirm("");
-                                }}
-                            >
-                                회원가입할래요
-                            </div>
+                        <p
+                            onClick={function (event) {
+                                event.preventDefault();
+                                setMode("signin");
+                                setId("");
+                                setPassword("");
+                                setConfirm("");
+                            }}
+                        >
+                            회원가입할래요
                         </p>
                         <GoToLoginLessNav />
                     </div>
