@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import "./login.css";
+import { NavLink } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
@@ -106,7 +107,7 @@ function Login({ closeModal }) {
                             </a>
                         </p>
                         <p>
-                            <a href="/Journey">로그인 없이 사용할래요</a>
+                            <NavLink to="/journey">로그인 없이 사용할래요</NavLink>
                         </p>
                     </div>
                 </div>
@@ -177,7 +178,7 @@ function Login({ closeModal }) {
                             </a>
                         </p>
                         <p>
-                            <a href="/Journey">로그인 없이 사용할래요</a>
+                            <NavLink to="/journey">로그인 없이 사용할래요</NavLink>
                         </p>
                     </div>
                 </div>
