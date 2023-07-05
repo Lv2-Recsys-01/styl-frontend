@@ -49,11 +49,14 @@ function DetailCodi() {
 
 function SimilarItems() {
     return (
-        <Space direction="horizontal" className="similar">
-            <img src="sample_codi.png" alt="NoImg" />
-            <img src="sample_codi.png" alt="NoImg" />
-            <img width src="sample_codi.png" alt="NoImg" />
-        </Space>
+        <div>
+            <p className="description">유사한 아이템</p>
+            <Space direction="horizontal" className="similar">
+                <img src="sample_codi.png" alt="NoImg" />
+                <img src="sample_codi.png" alt="NoImg" />
+                <img src="sample_codi.png" alt="NoImg" />
+            </Space>
+        </div>
     );
 }
 

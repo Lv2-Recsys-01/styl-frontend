@@ -64,11 +64,11 @@
     height:60px;
 }
 
-.signup-button.disabled {
+.login-button.disabled {
     background-color: var(--background);
 }
 
-.signin-button.disabled {
+.signup-button.disabled {
     background-color: var(--background);
 }
 

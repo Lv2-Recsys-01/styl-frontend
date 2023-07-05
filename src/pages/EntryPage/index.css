@@ -3,7 +3,7 @@
     height:100%;
     text-align: center;
     background-color: var(--background);
-    backdrop-filter: blur(40px); /* 흐림 효과 설정 */
+    backdrop-filter: blur(px); /* 흐림 효과 설정 */
 }
 
 .entry-background img{

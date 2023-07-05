@@ -24,7 +24,7 @@ const lightColor = {
     agategray: "#b4b1a1",
     palekhaki: "#bfb092",
     paledogwood: "#edcdc2",
-    background: "rgba(191, 202, 214, 0.8)",
+    background: "rgba(191, 202, 214, 0.5)",
 };
 
 const darkColor = {
