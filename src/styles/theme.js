@@ -18,6 +18,7 @@ const lightColor = {
     info: "#17a2b8",
     warning: "#ffc107",
     danger: "#dc3545",
+    background: "#edede9",
 };
 
 const darkColor = {
