@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./layout.css";
+import withRouter from "../../hoc/withRouter";
 
-function Header() {
+export function Header() {
     return (
         <div className="header">
             <div className="wrapper">this is header</div>
@@ -9,18 +10,29 @@ function Header() {
     );
 }
 
-function Footer() {
+export function Footer() {
     return <div>footer</div>;
 }
 
-function Layout({ children }) {
+function Layout({ children, location }) {
+    const [isDetailPage, setIsDetailPage] = useState(() => location.pathname === "/detail");
+    useEffect(() => {
+        setIsDetailPage(location.pathname === "/detail");
+    }, [location]);
+
     return (
         <div className="global-container">
-            <Header />
-            {children}
-            <Footer />
+            {isDetailPage ? (
+                <div>{children}</div>
+            ) : (
+                <>
+                    <Header />
+                    {children}
+                    <Footer />
+                </>
+            )}
         </div>
     );
 }
 
-export default Layout;
+export default withRouter(Layout);
