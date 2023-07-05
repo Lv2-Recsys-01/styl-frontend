@@ -6,6 +6,8 @@
     top: 0;
     left: 0;
     width: 100%;
+    min-height: 550px;
+    max-height: 700px;
     height: 100%;
     background-color: rgba(256, 256, 256, 0.2);
     display: flex;

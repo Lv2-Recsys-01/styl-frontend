@@ -1,0 +1,14 @@
+.entry-background{
+    width:100%;
+    height:100%;
+    text-align: center;
+    background-color: var(--background);
+}
+
+.entry-background img{
+    width:80%;
+    object-fit:cover;
+    border-radius: 10px;
+    margin:20px;
+    margin-bottom: 0;
+}
