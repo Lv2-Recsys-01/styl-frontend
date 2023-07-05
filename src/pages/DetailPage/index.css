@@ -6,8 +6,9 @@
     align-items: center;
     justify-content: space-between;
     height: 65px;
-    padding-inline: 50px;
+    padding-inline: 30px;
     line-height: 64px;
+    margin-top:15px;
     background-color: var(--background);
   }
 
