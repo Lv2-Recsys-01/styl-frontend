@@ -23,7 +23,7 @@ const lightColor = {
     GraySand: " #e5ccb0",
     PleinAir: " #bfcad6",
     AgateGray: " #b4b1a1",
-    PaleKhak: " #bfb092",
+    PaleKhaki: " #bfb092",
     PaleDogwood: "#edcdc2",
 };
 

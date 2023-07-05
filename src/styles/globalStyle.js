@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
         --GraySand: : ${(props) => props.theme.lightColor.GraySand};
         --PleinAir: : ${(props) => props.theme.lightColor.PleinAir};
         --AgateGray: : ${(props) => props.theme.lightColor.AgateGray};
-        --PaleKhak: : ${(props) => props.theme.lightColor.PaleKhak};
+        --PaleKhaki: : ${(props) => props.theme.lightColor.PaleKhaki};
         --PaleDogwood: : ${(props) => props.theme.lightColor.PaleDogwood};
 
         /* adaptive gray lightmode */
