@@ -19,6 +19,7 @@ function Login({ closeModal = () => {} }) {
     const [modalMode, setModalMode] = useState("login");
     const [confirm, setConfirm] = useState("");
     const [error, setError] = useState(false);
+    const [title, setTitle] = useState("로그인");
 
     const handleIdChange = (e) => {
         const value = e.target.value;
@@ -39,8 +40,10 @@ function Login({ closeModal = () => {} }) {
         e.preventDefault();
         if (modalMode === "login") {
             setModalMode("signin");
+            setTitle("회원가입");
         } else {
             setModalMode("login");
+            setTitle("로그인");
         }
         clearInput(true);
     };
@@ -65,7 +68,7 @@ function Login({ closeModal = () => {} }) {
 
         if (checkLoginIneligibility) {
             clearInput();
-            setError("검증에 실패했어요");
+            setError("로그인에 실패했어요");
         }
     };
 
@@ -74,7 +77,7 @@ function Login({ closeModal = () => {} }) {
 
         if (checkSigninIneligibility) {
             clearInput();
-            setError("검증에 실패했어요");
+            setError("회원가입에 실패했어요");
         }
     };
 
@@ -87,14 +90,22 @@ function Login({ closeModal = () => {} }) {
             overlayClassName="modal-overlay"
         >
             <div className="background">
-                <h2 className="title">10초면 가입할 수 있어요!</h2>
+                <h2 className="title">{title}</h2>
                 <div className="box">
-                    ID
-                    <input type="text" placeholder="ID" value={id} onChange={handleIdChange} maxLength={20} />
+                    <p className="guide">ID</p>
+                    <input
+                        className="user_info"
+                        type="text"
+                        placeholder="ID"
+                        value={id}
+                        onChange={handleIdChange}
+                        maxLength={20}
+                    />
                 </div>
                 <div className="box">
-                    Password (4자리 숫자)
+                    <p className="guide">Password (4자리 숫자)</p>
                     <input
+                        className="user_info"
                         type="password"
                         placeholder="Password"
                         value={password}
@@ -104,8 +115,9 @@ function Login({ closeModal = () => {} }) {
                 </div>
                 {isSignInMode && (
                     <div className="box">
-                        Confirm Password
+                        <p className="guide">Confirm Password</p>
                         <input
+                            className="user_info"
                             type="password"
                             placeholder="Confirm Password"
                             value={confirm}
@@ -142,7 +154,7 @@ function Login({ closeModal = () => {} }) {
 
                 {/* modal Mode 전환 */}
                 <div className="option">
-                    <p onClick={handleToggleModalModeButton}>{isLogInMode ? "회원가입할래요" : "회원가입"}</p>
+                    <p onClick={handleToggleModalModeButton}>{isLogInMode ? "회원가입할래요" : "로그인할래요"}</p>
                     <GoToLoginLessNav />
                 </div>
             </div>
