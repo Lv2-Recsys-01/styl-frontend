@@ -18,7 +18,13 @@ const lightColor = {
     info: "#17a2b8",
     warning: "#ffc107",
     danger: "#dc3545",
-    background: "#edede9",
+    background: "rgba(212, 202, 205, 0.5)",
+    VivaMagenta: "#BE3455",
+    GraySand: " #e5ccb0",
+    PleinAir: " #bfcad6",
+    AgateGray: " #b4b1a1",
+    PaleKhak: " #bfb092",
+    PaleDogwood: "#edcdc2",
 };
 
 const darkColor = {
