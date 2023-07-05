@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
         --agategray: ${(props) => props.theme.lightColor.agategray};
         --palekhaki: ${(props) => props.theme.lightColor.palekhaki};
         --paledogwood: ${(props) => props.theme.lightColor.paledogwood};
+        --pleinair: ${(props) => props.theme.lightColor.pleinair};
         --background: ${(props) => props.theme.lightColor.background};
 
         /* adaptive gray lightmode */
