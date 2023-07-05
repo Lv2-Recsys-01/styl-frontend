@@ -23,6 +23,7 @@
     padding: 25px;
     border-radius: 10px;
     opacity: 0.9;
+    backdrop-filter: blur(8px);
 }
 
 .title {

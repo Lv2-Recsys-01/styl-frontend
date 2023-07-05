@@ -82,85 +82,83 @@ function Login({ closeModal = () => {} }) {
     };
 
     return (
-        <div>
-            <Modal
-                isOpen={true}
-                onRequestClose={closeModal}
-                shouldCloseOnOverlayClick={false}
-                className="modal"
-                overlayClassName="modal-overlay"
-            >
-                <div className="background">
-                    <h2 className="title">{title}</h2>
+        <Modal
+            isOpen={true}
+            onRequestClose={closeModal}
+            shouldCloseOnOverlayClick={false}
+            className="modal"
+            overlayClassName="modal-overlay"
+        >
+            <div className="background">
+                <h2 className="title">{title}</h2>
+                <div className="box">
+                    <p className="guide">ID</p>
+                    <input
+                        className="user_info"
+                        type="text"
+                        placeholder="ID"
+                        value={id}
+                        onChange={handleIdChange}
+                        maxLength={20}
+                    />
+                </div>
+                <div className="box">
+                    <p className="guide">Password (4자리 숫자)</p>
+                    <input
+                        className="user_info"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        maxLength={4}
+                    />
+                </div>
+                {isSignUpMode && (
                     <div className="box">
-                        <p className="guide">ID</p>
-                        <input
-                            className="user_info"
-                            type="text"
-                            placeholder="ID"
-                            value={id}
-                            onChange={handleIdChange}
-                            maxLength={20}
-                        />
-                    </div>
-                    <div className="box">
-                        <p className="guide">Password (4자리 숫자)</p>
+                        <p className="guide">Confirm Password</p>
                         <input
                             className="user_info"
                             type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={handlePasswordChange}
+                            placeholder="Confirm Password"
+                            value={confirm}
+                            onChange={handleConfirmChange}
                             maxLength={4}
                         />
                     </div>
-                    {isSignUpMode && (
-                        <div className="box">
-                            <p className="guide">Confirm Password</p>
-                            <input
-                                className="user_info"
-                                type="password"
-                                placeholder="Confirm Password"
-                                value={confirm}
-                                onChange={handleConfirmChange}
-                                maxLength={4}
-                            />
-                        </div>
-                    )}
+                )}
 
-                    {/* 로그인, 회원가입 제출 */}
-                    {isLogInMode && (
-                        <div className="box">
-                            <button
-                                onClick={handleLogin}
-                                className={`login-button ${checkLoginIneligibility ? "disabled" : ""}`}
-                            >
-                                로그인
-                            </button>
-                        </div>
-                    )}
-                    {isSignUpMode && (
-                        <div className="box">
-                            <button
-                                onClick={handleSignup}
-                                className={`signup-button ${checkSignupIneligibility ? "disabled" : ""}`}
-                            >
-                                회원가입
-                            </button>
-                        </div>
-                    )}
-
-                    {/* 에러 섹션 */}
-                    {error && <p className="error">{error}</p>}
-
-                    {/* modal Mode 전환 */}
-                    <div className="option">
-                        <p onClick={handleToggleModalModeButton}>{isLogInMode ? "10초만에 회원가입" : "로그인"}</p>
-                        <GoToLoginLessNav />
+                {/* 로그인, 회원가입 제출 */}
+                {isLogInMode && (
+                    <div className="box">
+                        <button
+                            onClick={handleLogin}
+                            className={`login-button ${checkLoginIneligibility ? "disabled" : ""}`}
+                        >
+                            로그인
+                        </button>
                     </div>
+                )}
+                {isSignUpMode && (
+                    <div className="box">
+                        <button
+                            onClick={handleSignup}
+                            className={`signup-button ${checkSignupIneligibility ? "disabled" : ""}`}
+                        >
+                            회원가입
+                        </button>
+                    </div>
+                )}
+
+                {/* 에러 섹션 */}
+                {error && <p className="error">{error}</p>}
+
+                {/* modal Mode 전환 */}
+                <div className="option">
+                    <p onClick={handleToggleModalModeButton}>{isLogInMode ? "10초만에 회원가입" : "로그인"}</p>
+                    <GoToLoginLessNav />
                 </div>
-            </Modal>
-        </div>
+            </div>
+        </Modal>
     );
 }
 
