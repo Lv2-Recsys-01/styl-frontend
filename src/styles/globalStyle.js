@@ -18,13 +18,13 @@ const GlobalStyle = createGlobalStyle`
         --info: ${(props) => props.theme.lightColor.info};
         --warning: ${(props) => props.theme.lightColor.warning};
         --danger: ${(props) => props.theme.lightColor.danger};
+        --vivamagenta: ${(props) => props.theme.lightColor.vivamagenta};
+        --graysand: ${(props) => props.theme.lightColor.graysand};
+        --pleinair: ${(props) => props.theme.lightColor.pleinair};
+        --agategray: ${(props) => props.theme.lightColor.agategray};
+        --palekhaki: ${(props) => props.theme.lightColor.palekhaki};
+        --paledogwood: ${(props) => props.theme.lightColor.paledogwood};
         --background: ${(props) => props.theme.lightColor.background};
-        --VivaMagenta: : ${(props) => props.theme.lightColor.VivaMagenta};
-        --GraySand: : ${(props) => props.theme.lightColor.GraySand};
-        --PleinAir: : ${(props) => props.theme.lightColor.PleinAir};
-        --AgateGray: : ${(props) => props.theme.lightColor.AgateGray};
-        --PaleKhaki: : ${(props) => props.theme.lightColor.PaleKhaki};
-        --PaleDogwood: : ${(props) => props.theme.lightColor.PaleDogwood};
 
         /* adaptive gray lightmode */
         --adaptiveGray50: #f9fafb;
