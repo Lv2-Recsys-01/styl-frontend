@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
+
+const PAGE_SIZE = 10;
 
 const S = {
     GridWrapper: styled.div`
@@ -33,8 +35,53 @@ function getRandomNumber() {
     return randomNumber * 100;
 }
 
+const GridItem = ({ children, index }) => {
+    return <S.GridItem key={index}>{children}</S.GridItem>;
+};
+
 function ImageGridView() {
-    const arr = new Array(7).fill(0);
+    const arr = new Array(PAGE_SIZE + 1).fill(0);
+    const gridViewWrapperBottomDomRef = useRef(null);
+    const currentPage = useRef(0);
+    const totalPage = useRef(100);
+    const [outfits, setOutfits] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useLayoutEffect(() => {
+        totalPage.current = 100;
+    });
+
+    useEffect(() => {
+        let observer;
+        const gridViewWrapperBottomDom = gridViewWrapperBottomDomRef.current;
+
+        if (gridViewWrapperBottomDom) {
+            const options = {
+                root: null, // viewport
+                rootMargin: "0px 0px 10px 0px",
+                threshold: [0.25],
+            };
+            observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !isLoading && currentPage.current < totalPage.current) {
+                        console.log("should fetch data");
+                        setIsLoading(true);
+
+                        // TODO: fetch data
+
+                        setIsLoading(false);
+                    }
+                });
+            }, options);
+
+            if (gridViewWrapperBottomDom) {
+                observer.observe(gridViewWrapperBottomDom);
+            }
+        }
+        return () => {
+            observer.observe(gridViewWrapperBottomDom);
+        };
+    }, [isLoading]);
 
     return (
         <S.GridWrapper>
@@ -42,11 +89,12 @@ function ImageGridView() {
                 const randomNumWidth = getRandomNumber();
                 const randomNumHeight = getRandomNumber();
                 return (
-                    <S.GridItem key={idx}>
+                    <GridItem key={idx}>
                         <img src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`} alt={idx} />
-                    </S.GridItem>
+                    </GridItem>
                 );
             })}
+            <div ref={gridViewWrapperBottomDomRef} />
         </S.GridWrapper>
     );
 }
