@@ -12,3 +12,31 @@
 .header .wrapper {
     background-color: var(--red);
 }
+
+.header .wrapper .options{
+    min-width: 320px;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    /* padding-inline: 30px; */
+    line-height: 64px;
+  }
+
+  .header .wrapper .user_id{
+    text-align: left;
+    width:40px;
+    opacity: 0.9;
+    margin-left: 5px;
+    margin-right: auto;
+  }
+
+  .header .wrapper .login{
+    text-align: right;
+    width:40px;
+    opacity: 0.9;
+    margin-left: 5px;
+    margin-right: auto;
+  }
+

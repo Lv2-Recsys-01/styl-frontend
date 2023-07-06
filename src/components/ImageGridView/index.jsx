@@ -15,7 +15,7 @@ const S = {
         padding-top: 162%; /* 황금비 1.618의 근사값. 가로 대비 세로의 높이 */
         overflow: hidden;
         border-radius: 12px;
-        border: 2px solid red;
+        border: 2px solid var(--vivamagenta);
 
         img {
             position: absolute;
@@ -91,6 +91,8 @@ function ImageGridView() {
                 return (
                     <GridItem key={idx}>
                         <img src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`} alt={idx} />
+                        {/* <img src="sample_codi.png"/>
+                        여기에 하트나 다른 컴포넌트 넣어서 div태그로 묶어서 서빙가능한가요?? */}
                     </GridItem>
                 );
             })}
