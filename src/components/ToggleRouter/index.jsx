@@ -11,14 +11,14 @@ function ToggleRouter() {
     };
 
     const isActiveRoute = (route) => {
-        return location.pathname === `/${route}`;
+        return location.pathname === `/${route}` || (location.pathname === "/" && route === "Journey");
     };
 
     return (
         <div className="wrapper">
             <button
-                className={`route-btn route-btn-journey ${isActiveRoute("journey") ? "active" : ""}`}
-                onClick={() => onRouteBtnClick("journey")}
+                className={`route-btn route-btn-journey ${isActiveRoute("Journey") ? "active" : ""}`}
+                onClick={() => onRouteBtnClick("Journey")}
             >
                 JOURNEY
             </button>

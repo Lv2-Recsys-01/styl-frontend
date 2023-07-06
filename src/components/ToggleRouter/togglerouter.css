@@ -15,6 +15,15 @@
     color:var(--vivamagenta);
     font-size:16px;
   }
+  .route-btn-journey {
+    background-color: var(--graylilac);
+    color:var(--vivamagenta);
+  }
+
+  .route-btn-collection{
+    background-color: var(--graylilac);
+    color:var(--vivamagenta);
+  }
 
   .route-btn.active {
     background-color: var(--vivamagenta);
