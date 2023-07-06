@@ -3,6 +3,7 @@ import "./layout.css";
 import withRouter from "../../hoc/withRouter";
 import { Space } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
+import { ArrowDownOutlined } from "@ant-design/icons";
 
 export function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -47,7 +48,13 @@ export function Header() {
 }
 
 export function Footer() {
-    return <div>footer</div>;
+    return (
+        <div className={`footer-container`}>
+            <div className="arrow-container">
+                <ArrowDownOutlined className="arrow" />
+            </div>
+        </div>
+    );
 }
 
 function Layout({ children, location }) {

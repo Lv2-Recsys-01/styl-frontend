@@ -40,3 +40,33 @@
     color:var(--vivamagenta)
   }
 
+  .footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:50px;
+    overflow: hidden;
+  }
+  
+  .arrow-container {
+    position: relative;
+    animation: moveDown 2s infinite;
+  }
+  
+  @keyframes moveDown {
+    0% {
+      transform: translateY(25%);
+    }
+    50% {
+      transform: translateY(50%);
+    }
+    100% {
+      transform: translateY(25%);
+    }
+  }
+  
+  .arrow {
+    color: var(--vivamagenta);
+    font-size: 24px;
+    cursor: pointer;
+  }
