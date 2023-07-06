@@ -6,10 +6,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 export function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userId, setUserId] = useState("");
     const navigate = useNavigate();
 
     //로그인 여부를 확인해서 로그인 했으면
     //setIsLoggedIn('true')
+    //setUserId('user123')
 
     const handleLogin = () => {
         // 로그인 버튼 클릭 시 처리할 이벤트
@@ -34,7 +36,7 @@ export function Header() {
         <div className="header">
             <div className="wrapper">
                 <Space direction="horizontal" className="options">
-                    <div className="user_id">유저 아이디</div>
+                    <div className="user_id">{userId}</div>
                     <NavLink to="/" className="login" onClick={handleLoginLogout}>
                         {isLoggedIn ? "Logout" : "Login"}
                     </NavLink>
