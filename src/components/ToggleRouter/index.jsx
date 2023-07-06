@@ -26,7 +26,7 @@ function ToggleRouter() {
                 className={`route-btn route-btn-collection ${isActiveRoute("collections") ? "active" : ""}`}
                 onClick={() => onRouteBtnClick("collections")}
             >
-                My COLLECTIONS
+                COLLECTIONS
             </button>
         </div>
     );

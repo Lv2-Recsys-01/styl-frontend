@@ -5,7 +5,6 @@ import ImageGridView from "../../components/ImageGridView";
 function Journey() {
     return (
         <div>
-            Journey page
             <ToggleRouter />
             <ImageGridView />
         </div>
