@@ -1,12 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap');
+
 .global-container {
+    font-family: 'Noto Serif KR', serif;
     min-width: 320px;
     max-width: 500px;
     min-height: 100vh;
-
     margin: 0 auto; /* for global centering */
-    background-color: white;
+    background-color: rgba(256, 256, 256, 0.9);
 }
 
-.header .wrapper {
-    background-color: var(--red);
-}
+.header .wrapper .options{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    /* padding-inline: 30px; */
+    line-height: 64px;
+    margin:10px;
+    margin-top:20px;
+  }
+
+  .header .wrapper .user_id{
+    text-align: left;
+    padding: 15px;
+    margin-right: auto;
+    font-size: 20px;
+    font-style: italic;
+    color:var(--palekhaki)
+  }
+
+  .header .wrapper .login{
+    text-align: right;
+    opacity: 0.9;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: underline;
+    font-style: italic;
+    color:var(--vivamagenta)
+  }
+
