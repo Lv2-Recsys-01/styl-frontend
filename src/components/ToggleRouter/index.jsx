@@ -1,36 +1,34 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { styled } from "styled-components";
-
-const S = {
-    Wrapper: styled.div`
-        display: flex;
-        width: 100%;
-
-        padding: 0 32px;
-    `,
-    RouteBtn: styled.button`
-        width: 50%;
-        margin: 0 8px;
-    `,
-};
+import { useNavigate, useLocation } from "react-router-dom";
+import "./togglerouter.css";
 
 function ToggleRouter() {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const onRouteBtnClick = (route) => {
         navigate(`/${route}`);
     };
 
+    const isActiveRoute = (route) => {
+        return location.pathname === `/${route}`;
+    };
+
     return (
-        <S.Wrapper>
-            <S.RouteBtn className="route-btn" onClick={() => onRouteBtnClick("journey")}>
+        <div className="wrapper">
+            <button
+                className={`route-btn route-btn-journey ${isActiveRoute("journey") ? "active" : ""}`}
+                onClick={() => onRouteBtnClick("journey")}
+            >
                 JOURNEY
-            </S.RouteBtn>
-            <S.RouteBtn className="route-btn" onClick={() => onRouteBtnClick("collections")}>
+            </button>
+            <button
+                className={`route-btn route-btn-collection ${isActiveRoute("collections") ? "active" : ""}`}
+                onClick={() => onRouteBtnClick("collections")}
+            >
                 My COLLECTIONS
-            </S.RouteBtn>
-        </S.Wrapper>
+            </button>
+        </div>
     );
 }
 
