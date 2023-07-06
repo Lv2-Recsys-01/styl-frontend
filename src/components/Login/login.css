@@ -1,83 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap');
+
 .modal {
+    font-family: 'Noto Serif KR', serif;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-
+    min-height: 550px;
+    max-height: 700px;
     height: 100%;
-    background-color: rgba(256, 256, 256, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .background {
-    background-color: rgba(221, 204, 196, 0.8);
+    background-color: var(--pleinair);
     width: 80%;
     max-width: 480px;
     min-width: 320px;
     height: 550px;
     padding: 25px;
     border-radius: 10px;
-    opacity: 0.8;
+    border: 3px solid var(--vivamagenta);
+    opacity: 0.85;
 }
 
 .title {
+    font-weight: 600;
     text-align: center;
-    color: black;
-    font-size: 20px;
-    margin-bottom: 40px;
-    margin-top: 40px;
+    color: var(--black);
+    font-size: 25px;
+    margin-bottom: 30px;
+    margin-top: 15px;
 }
 
-.wrong {
-    text-align: center;
-    color: red;
-    font-size: 25px;
-    margin-bottom: 40px;
-    margin-top: 40px;
+.error {
+    color: var(--red);
+    font-size: 15px;
+    margin-left: 13px;
+    font-weight: 700;
 }
 
 .box {
     margin: 10px;
 }
 
-input {
+.box .user_info {
     width: 100%;
     height: 50px;
     border-radius: 10px;
-    border-color: rgba(221, 204, 196, 0.8);
+    border-color: var(--vivamagenta);
+}
+
+.box .guide{
+    margin-bottom:2px;
 }
 
 .box button {
-    background-color: var(--orange);
+    background-color: var(--vivamagenta);
     padding: 15px;
     border-radius: 10px;
-    cursor: pointer;
     width: 100%;
+    height:60px;
+    font-weight: 600;
+    border-color: var(--vivamagenta);
 }
 
-/* .signup-button.disabled {
-    background-color: rgba(110, 102, 98, 0.8);
+.login-button.disabled {
+    background-color: var(--background);
 }
 
-.signup-button:hover:not(.disabled) {
-    background-color: orange;
+.signup-button.disabled {
+    background-color: var(--background);
 }
-
-.signin-button.disabled {
-    background-color: rgba(110, 102, 98, 0.8);
-}
-
-.signin-button:hover:not(.disabled) {
-    background-color: orange;
-} */
 
 .option {
     margin-top: 50px;
     margin-bottom: 50px;
     font-size: 20px;
-    color: brown;
+    color: var(--vivamagenta);
     text-align: center;
     text-decoration: underline;
+    font-weight: 600;
 }

@@ -17,7 +17,7 @@ export function Footer() {
 function Layout({ children, location }) {
     const [isDetailPage, setIsDetailPage] = useState(() => location.pathname === "/detail");
     useEffect(() => {
-        setIsDetailPage(location.pathname === "/detail");
+        setIsDetailPage(location.pathname === "/detail" || location.pathname === "/");
     }, [location]);
 
     return (

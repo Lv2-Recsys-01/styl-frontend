@@ -1,6 +1,3 @@
-.detail{
-  background-color: var(--background);
-}
 .detail .header {
     display: flex;
     align-items: center;
@@ -29,14 +26,12 @@
   .detail .content {
     text-align: center;
     width:100%;
-    margin-bottom: 20px;
+    background-color: var(--background);
   }
   
   .detail .content .codi{
     border-radius: 10px;
-    border: 2px solid black;
     width:90%;
-    margin:10px;
     padding: 10px;
   }
 
@@ -51,25 +46,21 @@
 
   .detail .content .musinsa{
     width:40px;
-    opacity: 0.9;
     margin-left: 5px;
     margin-right: auto;
   }
   
   .detail .content .share{
     font-size:40px;
-    opacity: 0.9;
     margin-right:10px;
   }
 
   .detail .content .heart{
     font-size:40px;
-    opacity: 0.9;
     margin-right:5px;
   }
   
   .detail .footer {
-      text-align: center;
       background-color: var(--background);
   }
 
@@ -77,11 +68,18 @@
     display: flex;
     justify-content: center;
     width:100%;
+    border: 2px solid var(--vivamagenta) ;
+    border-radius: 10px;
+    padding:10px;
+  }
+
+  .detail .footer .description{
+    text-align: left;
   }
 
   .detail .similar img {
     width: 100%;
     border-radius: 10px;
-    border: 2px solid red;
-    padding: 10px;
+    border: 1px solid var(--background);
   }
+
