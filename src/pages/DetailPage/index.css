@@ -26,12 +26,16 @@
     text-align: center;
     width:100%;
     background-color: var(--background);
+    border: solid 1px var(--graylilac);
+    border-radius: 10px;
+    padding: 20px;
   }
+ 
   
   .detail .content .codi{
     border-radius: 10px;
     width:70%;
-    border: solid 3px var(--graylilac);
+    /* border: solid 3px var(--graylilac); */
   }
 
   .detail .content .options{
@@ -61,26 +65,25 @@
   
   .detail .footer {
       background-color: var(--background);
+      border: solid 1px var(--vivamagenta);
+      border-radius: 10px;
   }
 
   .detail .similar{
     display: flex;
     justify-content: center;
     width:100%;
-    border: 2px solid var(--vivamagenta) ;
     border-radius: 10px;
-    padding:10px;
   }
 
   .detail .footer .description{
     font-family: 'Noto Serif KR', serif;
     font-weight: 600;
     text-align: left;
+    color:var(--vivamagenta);
   }
 
   .detail .similar img {
     width: 100%;
     border-radius: 10px;
-    border: 1px solid var(--background);
   }
-
