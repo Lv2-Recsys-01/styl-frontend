@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap');
+
 .global-container {
+    font-family: 'Noto Serif KR', serif;
     min-width: 320px;
     max-width: 500px;
     min-height: 100vh;
-
     margin: 0 auto; /* for global centering */
-    background-color: white;
+    background-color: rgba(256, 256, 256, 0.9);
 }
 
 .header .wrapper {
