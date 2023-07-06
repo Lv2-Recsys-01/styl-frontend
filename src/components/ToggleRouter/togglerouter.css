@@ -1,28 +1,21 @@
 .wrapper {
     display: flex;
     width: 100%;
-    padding: 0 32px;
   }
   
   .route-btn {
     width: 100%;
-    border: solid 3px var(--vivamagenta);
+    height:35px;
+    border: dashed 2px var(--vivamagenta);
     padding: 5px;
     border-radius: 10px;
+    font-weight: 600;
+    margin:10px;
+    background-color: var(--graylilac);
+    font-weight: 400;
+    font-size:14px;
   }
-  
-  .route-btn-journey {
-    background-color: var(--journey-color);
-  }
-  
-  .route-btn-collection {
-    background-color: var(--collections-color);
-  }
-  
-  .route-btn-collection:hover {
-    background-color: var(--background);
-  }
-  
+
   .route-btn.active {
     background-color: var(--vivamagenta);
     color: var(--graylilac);
