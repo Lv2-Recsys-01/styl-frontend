@@ -11,7 +11,10 @@ function ToggleRouter() {
     };
 
     const isActiveRoute = (route) => {
-        return location.pathname === `/${route}` || (location.pathname === "/" && route === "Journey");
+        return (
+            location.pathname.toLowerCase() === `/${route.toLowerCase()}` ||
+            (location.pathname === "/" && route === "Journey")
+        );
     };
 
     return (
