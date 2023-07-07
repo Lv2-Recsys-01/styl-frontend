@@ -1,0 +1,29 @@
+.scroll-to-top-button {
+    position: fixed;
+    bottom: 40px;
+    width: 100%;
+    max-width: 500px;
+    animation: moveDown 2s infinite;
+    display: flex;
+    justify-content: center;
+  }
+  
+  @keyframes moveDown {
+    0% {
+      transform: translateY(25%);
+    }
+    50% {
+      transform: translateY(50%);
+    }
+    100% {
+      transform: translateY(25%);
+    }
+  }
+  
+  .top-arrow {
+    font-size: 30px;
+    color: var(--vivamagenta);
+    margin-left: auto;
+    margin-right:40px;
+  }
+  
