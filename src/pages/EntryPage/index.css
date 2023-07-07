@@ -7,29 +7,27 @@
     opacity: 0.8;
     overflow: hidden;
   }
-
-  
-  @keyframes moveUp {
+  @keyframes backMoveUp {
     0% {
-      transform: translateY(-25%);
+      transform: translateY(50%);
     }
     50% {
-      transform: translateY(-50%);
+      transform: translateY(0%);
     }
     100% {
-      transform: translateY(-25%);
+      transform: translateY(50%);
     }
   }
   
-  @keyframes moveDown {
+  @keyframes backMoveDown {
     0% {
-      transform: translateY(25%);
+      transform: translateY(0%);
     }
     50% {
       transform: translateY(50%);
     }
     100% {
-      transform: translateY(25%);
+      transform: translateY(0%);
     }
   }
   
@@ -39,7 +37,7 @@
     border-radius: 10px;
     margin: 20px;
     margin-bottom: 0;
-    animation: moveUp 15s linear infinite;
+    animation: backMoveUp 8s infinite;
   }
   
   .entry-background .down {
@@ -48,10 +46,11 @@
     border-radius: 10px;
     margin: 20px;
     margin-bottom: 0;
-    animation: moveDown 15s linear infinite;
+    animation: backMoveDown 8s infinite;
   }
-
-  .entry-background .up, .entry-background .down {
+  
+  .entry-background .up,
+  .entry-background .down {
     animation-fill-mode: both;
   }
   
