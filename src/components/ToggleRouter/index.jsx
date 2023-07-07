@@ -18,7 +18,7 @@ function ToggleRouter() {
     };
 
     return (
-        <div className="wrapper">
+        <div className="toggle_wrapper">
             <button
                 className={`route-btn route-btn-journey ${isActiveRoute("Journey") ? "active" : ""}`}
                 onClick={() => onRouteBtnClick("Journey")}

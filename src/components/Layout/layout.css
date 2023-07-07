@@ -6,7 +6,19 @@
     max-width: 500px;
     min-height: 100vh;
     margin: 0 auto; /* for global centering */
-    background-color: rgba(256, 256, 256, 0.9);
+    background-color: var(--background);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 500px;
+  height:70px;
+  background-color: var(--graylilac);
+  opacity: 0.8;
+  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header .wrapper .options{
@@ -31,8 +43,8 @@
 
   .header .wrapper .login{
     text-align: right;
-    opacity: 0.9;
-    padding: 15px;
+    opacity: 1;
+    margin-right:30px;
     font-size: 20px;
     font-weight: 600;
     text-decoration: underline;
