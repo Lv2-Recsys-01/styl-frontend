@@ -6,6 +6,7 @@
     padding: 40px;  
     line-height: 64px;
     background-color: var(--background);
+    border-bottom: solid 1px var(--graylilac);
   }
 
   .detail .detail-header .back{
@@ -26,8 +27,6 @@
     text-align: center;
     width:100%;
     background-color: var(--background);
-    border: solid 1px var(--graylilac);
-    border-radius: 10px;
     padding: 20px;
   }
  
@@ -35,7 +34,8 @@
   .detail .detail-content .codi{
     border-radius: 10px;
     width:70%;
-    /* border: solid 3px var(--graylilac); */
+    margin: 5px;
+    border: double 3px var(--vivamagenta);
   }
 
   .detail .detail-content .options{
@@ -50,6 +50,7 @@
   .detail .detail-content .musinsa{
     width:40px;
     margin-right:15px;
+    cursor: pointer;
   }
   
   .detail .detail-content .share{
@@ -64,16 +65,14 @@
   }
   
   .detail .detail-footer {
-      background-color: var(--background);
-      border: solid 1px var(--vivamagenta);
-      border-radius: 10px;
+      background-color: var(--graylilac);
+      border-top: solid 1px var(--vivamagenta);
   }
 
   .detail .similar{
     display: flex;
     justify-content: center;
     width:100%;
-    border-radius: 10px;
   }
 
   .detail .detail-footer .description{
@@ -85,5 +84,7 @@
 
   .detail .similar img {
     width: 100%;
+    height:100%;
     border-radius: 10px;
+    cursor: pointer;
   }
