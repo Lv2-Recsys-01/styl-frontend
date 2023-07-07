@@ -5,6 +5,7 @@ import { Space } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import MoveToTop from "../MoveToTop";
+import MoveBottom from "../MoveBottom";
 
 export function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,13 +50,7 @@ export function Header() {
 }
 
 export function Footer() {
-    return (
-        <div className={`footer-container`}>
-            <div className="arrow-container">
-                <ArrowDownOutlined className="bottom-arrow" />
-            </div>
-        </div>
-    );
+    return <div className={`footer-container`}>footer</div>;
 }
 
 function Layout({ children, location }) {
@@ -72,7 +67,7 @@ function Layout({ children, location }) {
                 <>
                     <Header />
                     {children}
-                    <Footer />
+                    <MoveBottom />
                     <MoveToTop />
                 </>
             )}

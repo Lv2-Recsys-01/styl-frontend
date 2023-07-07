@@ -1,14 +1,14 @@
 .scroll-to-top-button {
     position: fixed;
-    bottom: 40px;
+    bottom: 80px;
     width: 100%;
     max-width: 500px;
-    animation: moveDown 2s infinite;
+    animation: moveUp 2s infinite;
     display: flex;
     justify-content: center;
   }
   
-  @keyframes moveDown {
+  @keyframes moveUp {
     0% {
       transform: translateY(25%);
     }
@@ -22,7 +22,7 @@
   
   .top-arrow {
     font-size: 30px;
-    color: var(--vivamagenta);
+    color: var(--graylilac);
     margin-left: auto;
     margin-right:40px;
   }
