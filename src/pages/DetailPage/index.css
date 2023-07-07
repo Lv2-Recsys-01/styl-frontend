@@ -1,4 +1,4 @@
-.detail .header {
+.detail .detail-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -8,21 +8,21 @@
     background-color: var(--background);
   }
 
-  .detail .header .back{
+  .detail .detail-header .back{
     text-align: left;
     font-size:40px;
     color: var(--vivamagenta);
     opacity: 0.9;
   }
 
-  .detail .header .close{
+  .detail .detail-header .close{
     text-align: right;
     font-size:40px;
     color: var(--vivamagenta);
     opacity: 0.9;
   }
   
-  .detail .content {
+  .detail .detail-content {
     text-align: center;
     width:100%;
     background-color: var(--background);
@@ -32,13 +32,13 @@
   }
  
   
-  .detail .content .codi{
+  .detail .detail-content .codi{
     border-radius: 10px;
     width:70%;
     /* border: solid 3px var(--graylilac); */
   }
 
-  .detail .content .options{
+  .detail .detail-content .options{
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -47,23 +47,23 @@
     line-height: 64px;
   }
 
-  .detail .content .musinsa{
+  .detail .detail-content .musinsa{
     width:40px;
     margin-right:15px;
   }
   
-  .detail .content .share{
+  .detail .detail-content .share{
     font-size:40px;
     margin-right:15px;
   }
 
-  .detail .content .heart{
+  .detail .detail-content .heart{
     display:flex;
     font-size:40px;
     color:var(--vivamagenta);
   }
   
-  .detail .footer {
+  .detail .detail-footer {
       background-color: var(--background);
       border: solid 1px var(--vivamagenta);
       border-radius: 10px;
@@ -76,7 +76,7 @@
     border-radius: 10px;
   }
 
-  .detail .footer .description{
+  .detail .detail-footer .description{
     font-family: 'Noto Serif KR', serif;
     font-weight: 600;
     text-align: left;

@@ -85,13 +85,13 @@ function DetailPage() {
             size={[0, 48]}
         >
             <Layout className="detail">
-                <Header className="header">
+                <Header className="detail-header">
                     <DetailHeader />
                 </Header>
-                <Content className="content">
+                <Content className="detail-content">
                     <DetailCodi />
                 </Content>
-                <Footer className="footer">
+                <Footer className="detail-footer">
                     <SimilarItems />
                 </Footer>
             </Layout>
