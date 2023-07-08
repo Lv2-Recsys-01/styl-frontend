@@ -1,5 +1,7 @@
+// import { Skeleton } from "antd";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
+import Skeleton from "../Skeleton";
 
 const PAGE_SIZE = 10;
 
@@ -26,6 +28,12 @@ const S = {
             object-fit: cover;
         }
     `,
+    //   LoadingWrapper: styled.div`
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     height: 300px; /* 로딩 이미지를 중앙에 정렬하기 위한 높이 */
+    //   `,
 };
 
 function getRandomNumber() {
@@ -67,37 +75,43 @@ function ImageGridView() {
                         console.log("should fetch data");
                         setIsLoading(true);
 
-                        // TODO: fetch data
-
-                        setIsLoading(false);
+                        // Simulating data fetching
+                        setTimeout(() => {
+                            const newData = [...outfits];
+                            for (let i = 0; i < PAGE_SIZE; i++) {
+                                const randomNumWidth = getRandomNumber();
+                                const randomNumHeight = getRandomNumber();
+                                newData.push(
+                                    <GridItem key={currentPage.current * PAGE_SIZE + i}>
+                                        <img
+                                            src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`}
+                                            alt={currentPage.current * PAGE_SIZE + i}
+                                        />
+                                    </GridItem>,
+                                );
+                            }
+                            setOutfits(newData);
+                            currentPage.current += 1;
+                            setIsLoading(false);
+                        }, 10000);
                     }
                 });
             }, options);
 
-            if (gridViewWrapperBottomDom) {
-                observer.observe(gridViewWrapperBottomDom);
-            }
-        }
-        return () => {
             observer.observe(gridViewWrapperBottomDom);
+        }
+
+        return () => {
+            observer.disconnect();
         };
-    }, [isLoading]);
+    }, [isLoading, outfits]);
 
     return (
-        <S.GridWrapper>
-            {arr.map((_, idx) => {
-                const randomNumWidth = getRandomNumber();
-                const randomNumHeight = getRandomNumber();
-                return (
-                    <GridItem key={idx}>
-                        <img src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`} alt={idx} />
-                        {/* <img src="sample_codi.png"/>
-                        여기에 하트나 다른 컴포넌트 넣어서 div태그로 묶어서 서빙가능한가요?? */}
-                    </GridItem>
-                );
-            })}
+        <div className="custom-wrapper">
+            <S.GridWrapper>{outfits}</S.GridWrapper>
+            {isLoading && <Skeleton />}
             <div ref={gridViewWrapperBottomDomRef} />
-        </S.GridWrapper>
+        </div>
     );
 }
 
