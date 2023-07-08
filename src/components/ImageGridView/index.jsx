@@ -28,12 +28,6 @@ const S = {
             object-fit: cover;
         }
     `,
-    //   LoadingWrapper: styled.div`
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     height: 300px; /* 로딩 이미지를 중앙에 정렬하기 위한 높이 */
-    //   `,
 };
 
 function getRandomNumber() {
@@ -48,7 +42,6 @@ const GridItem = ({ children, index }) => {
 };
 
 function ImageGridView() {
-    const arr = new Array(PAGE_SIZE + 1).fill(0);
     const gridViewWrapperBottomDomRef = useRef(null);
     const currentPage = useRef(0);
     const totalPage = useRef(100);
@@ -65,7 +58,7 @@ function ImageGridView() {
 
         if (gridViewWrapperBottomDom) {
             const options = {
-                root: null, // viewport
+                root: null,
                 rootMargin: "0px 0px 10px 0px",
                 threshold: [0.25],
             };
@@ -75,25 +68,34 @@ function ImageGridView() {
                         console.log("should fetch data");
                         setIsLoading(true);
 
+                        // Simulating data fetching time
+                        const startFetchTime = Date.now();
+
                         // Simulating data fetching
-                        setTimeout(() => {
-                            const newData = [...outfits];
-                            for (let i = 0; i < PAGE_SIZE; i++) {
-                                const randomNumWidth = getRandomNumber();
-                                const randomNumHeight = getRandomNumber();
-                                newData.push(
-                                    <GridItem key={currentPage.current * PAGE_SIZE + i}>
-                                        <img
-                                            src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`}
-                                            alt={currentPage.current * PAGE_SIZE + i}
-                                        />
-                                    </GridItem>,
-                                );
-                            }
-                            setOutfits(newData);
-                            currentPage.current += 1;
-                            setIsLoading(false);
-                        }, 10000);
+                        //TODO: backendapi get images
+                        fetchData().then(() => {
+                            const endFetchTime = Date.now();
+                            const elapsedFetchTime = endFetchTime - startFetchTime;
+                            const fetchTime = Math.max(0, 1000 - elapsedFetchTime); // Minimum fetchTime of 1 second
+                            setTimeout(() => {
+                                const newData = [...outfits];
+                                for (let i = 0; i < PAGE_SIZE; i++) {
+                                    const randomNumWidth = getRandomNumber();
+                                    const randomNumHeight = getRandomNumber();
+                                    newData.push(
+                                        <GridItem key={currentPage.current * PAGE_SIZE + i}>
+                                            <img
+                                                src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`}
+                                                alt={currentPage.current * PAGE_SIZE + i}
+                                            />
+                                        </GridItem>,
+                                    );
+                                }
+                                setOutfits(newData);
+                                currentPage.current += 1;
+                                setIsLoading(false);
+                            }, fetchTime);
+                        });
                     }
                 });
             }, options);
@@ -106,10 +108,22 @@ function ImageGridView() {
         };
     }, [isLoading, outfits]);
 
+    // Simulating data fetching
+    function fetchData() {
+        return new Promise((resolve) => {
+            // Simulating server response time
+            const responseTime = Math.random() * 1000 + 1000; // Random time between 0.5 and 2.5 seconds
+
+            setTimeout(() => {
+                resolve(responseTime);
+            }, responseTime);
+        });
+    }
+
     return (
         <div className="custom-wrapper">
             <S.GridWrapper>{outfits}</S.GridWrapper>
-            {isLoading && <Skeleton />}
+            {currentPage.current > 0 && isLoading && <Skeleton />}
             <div ref={gridViewWrapperBottomDomRef} />
         </div>
     );
