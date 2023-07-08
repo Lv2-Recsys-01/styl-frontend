@@ -1,7 +1,7 @@
 .toggle_wrapper {
     display: flex;
+    padding-top:70px;
     width: 100%;
-    margin-top:70px;
   }
   
   .route-btn {
