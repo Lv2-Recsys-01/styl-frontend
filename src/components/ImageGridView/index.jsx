@@ -1,7 +1,8 @@
-// import { Skeleton } from "antd";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
 import Skeleton from "../Skeleton";
+import HeartButton from "../../components/HeartButton";
+import "./imagegridview.css";
 
 const PAGE_SIZE = 10;
 
@@ -10,6 +11,7 @@ const S = {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px;
+        margin: 10px;
     `,
     GridItem: styled.div`
         position: relative;
@@ -24,8 +26,9 @@ const S = {
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 85%;
             object-fit: cover;
+            border-bottom: 2px dashed var(--vivamagenta);
         }
     `,
 };
@@ -84,10 +87,12 @@ function ImageGridView() {
                                     const randomNumHeight = getRandomNumber();
                                     newData.push(
                                         <GridItem key={currentPage.current * PAGE_SIZE + i}>
-                                            <img
+                                            {/* <img
                                                 src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`}
                                                 alt={currentPage.current * PAGE_SIZE + i}
-                                            />
+                                            /> */}
+                                            <img src="sample_codi.png" alt={currentPage.current * PAGE_SIZE + i} />
+                                            <HeartButton classname="heart-button" />
                                         </GridItem>,
                                     );
                                 }
