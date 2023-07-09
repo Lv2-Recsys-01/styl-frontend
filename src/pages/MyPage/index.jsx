@@ -5,7 +5,6 @@ import ImageGridView from "../../components/ImageGridView";
 function MyPage() {
     return (
         <div>
-            Collections
             <ToggleRouter />
             <ImageGridView />
         </div>

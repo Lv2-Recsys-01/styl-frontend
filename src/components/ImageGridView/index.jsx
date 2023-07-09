@@ -1,5 +1,8 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
+import Skeleton from "../Skeleton";
+import HeartButton from "../../components/HeartButton";
+import "./imagegridview.css";
 
 const PAGE_SIZE = 10;
 
@@ -8,6 +11,7 @@ const S = {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px;
+        margin: 10px;
     `,
     GridItem: styled.div`
         position: relative;
@@ -15,15 +19,16 @@ const S = {
         padding-top: 162%; /* 황금비 1.618의 근사값. 가로 대비 세로의 높이 */
         overflow: hidden;
         border-radius: 12px;
-        border: 2px solid red;
+        border: 2px solid var(--vivamagenta);
 
         img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 85%;
             object-fit: cover;
+            border-bottom: 2px dashed var(--vivamagenta);
         }
     `,
 };
@@ -40,7 +45,6 @@ const GridItem = ({ children, index }) => {
 };
 
 function ImageGridView() {
-    const arr = new Array(PAGE_SIZE + 1).fill(0);
     const gridViewWrapperBottomDomRef = useRef(null);
     const currentPage = useRef(0);
     const totalPage = useRef(100);
@@ -57,9 +61,9 @@ function ImageGridView() {
 
         if (gridViewWrapperBottomDom) {
             const options = {
-                root: null, // viewport
-                rootMargin: "0px 0px 10px 0px",
-                threshold: [0.25],
+                root: null,
+                rootMargin: "0px 0px 20px 0px",
+                threshold: 0,
             };
             observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry) => {
@@ -67,35 +71,66 @@ function ImageGridView() {
                         console.log("should fetch data");
                         setIsLoading(true);
 
-                        // TODO: fetch data
+                        // Simulating data fetching time
+                        const startFetchTime = Date.now();
 
-                        setIsLoading(false);
+                        // Simulating data fetching
+                        //TODO: backendapi get images
+                        fetchData().then(() => {
+                            const endFetchTime = Date.now();
+                            const elapsedFetchTime = endFetchTime - startFetchTime;
+                            const fetchTime = Math.max(0, 1000 - elapsedFetchTime); // Minimum fetchTime of 1 second
+                            setTimeout(() => {
+                                const newData = [...outfits];
+                                for (let i = 0; i < PAGE_SIZE; i++) {
+                                    const randomNumWidth = getRandomNumber();
+                                    const randomNumHeight = getRandomNumber();
+                                    newData.push(
+                                        <GridItem key={currentPage.current * PAGE_SIZE + i}>
+                                            {/* <img
+                                                src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`}
+                                                alt={currentPage.current * PAGE_SIZE + i}
+                                            /> */}
+                                            <img src="sample_codi.png" alt={currentPage.current * PAGE_SIZE + i} />
+                                            <HeartButton classname="heart-button" />
+                                        </GridItem>,
+                                    );
+                                }
+                                setOutfits(newData);
+                                currentPage.current += 1;
+                                setIsLoading(false);
+                            }, fetchTime);
+                        });
                     }
                 });
             }, options);
 
-            if (gridViewWrapperBottomDom) {
-                observer.observe(gridViewWrapperBottomDom);
-            }
-        }
-        return () => {
             observer.observe(gridViewWrapperBottomDom);
+        }
+
+        return () => {
+            observer.disconnect();
         };
-    }, [isLoading]);
+    }, [isLoading, outfits]);
+
+    // Simulating data fetching
+    function fetchData() {
+        return new Promise((resolve) => {
+            // Simulating server response time
+            const responseTime = Math.random() * 1000 + 1000; // Random time between 0.5 and 2.5 seconds
+
+            setTimeout(() => {
+                resolve(responseTime);
+            }, responseTime);
+        });
+    }
 
     return (
-        <S.GridWrapper>
-            {arr.map((_, idx) => {
-                const randomNumWidth = getRandomNumber();
-                const randomNumHeight = getRandomNumber();
-                return (
-                    <GridItem key={idx}>
-                        <img src={`https://placehold.co/${randomNumWidth}x${randomNumHeight}`} alt={idx} />
-                    </GridItem>
-                );
-            })}
+        <div className="custom-wrapper">
+            <S.GridWrapper>{outfits}</S.GridWrapper>
+            {currentPage.current > 0 && isLoading && <Skeleton />}
             <div ref={gridViewWrapperBottomDomRef} />
-        </S.GridWrapper>
+        </div>
     );
 }
 
